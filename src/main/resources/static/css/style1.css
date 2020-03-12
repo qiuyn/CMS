@@ -1,0 +1,132 @@
+body{
+    margin: 0 auto;
+   /*background-color: aquamarine;*/
+}
+.head{
+    height: 50px;
+    width: 100%;
+  /* border: 1px solid red;*/
+    margin-bottom: 50px;
+    
+}
+.headimg{
+  
+  /*  border: 1px solid yellow;*/
+    float: left;
+}
+.headimg img{
+    height: 50px;
+    
+}  
+.headtitle{
+    padding-top: 5px;
+    margin-right: 50px;
+    float: right;
+}
+/*.headimg,.headtitle{float: right;}*/
+.navbarr{
+    height: 25px;
+    /*border: 1px solid green;*/
+    background: #C7DEFC url(../images/nav_bg.jpg) repeat-x left top;
+    
+}
+.navbarrA{
+    
+}
+.dropDown{
+   /*border: 1px solid coral;*/
+    margin-right: 0;
+    
+    width: 100px;
+    height: 100%;
+    padding-left: 10px;
+  background-color: cornflowerblue;
+  background:  url(../images/nav_bg_down.jpg) no-repeat right top;
+   
+}
+.dropDown_A{
+    display:block;
+    color: #3F6FC3;
+    font-size: 15px;
+}
+ .dropDown a:hover{color:blue}   
+ul.dropDown:focus,.dropDown-menu:focus{
+    height: 100px;
+    
+}
+.navbomimg{
+    height: 1px;
+    width: 100%;
+    background:  url(../images/nav_bg_down.jpg) no-repeat left top;
+    background-repeat:repeat; 
+    
+}
+.locationA{
+    height: 18px;
+    /*display:block;
+    border: 1px solid coral;*/
+    margin-bottom: 5px;
+}
+.locationA em{
+    color: #1f3c88;
+}
+.locationA span{
+    color:#5893d4;
+}
+.content{
+   min-height: 430px;
+    border: 1px solid green;
+}
+.formA{
+    margin-left: 40%;
+    height: 40px;
+    
+}
+
+.formB{
+    margin-left: 50%;
+    margin-bottom: 10px;
+}
+.formBV{
+    border: 1px solid green;
+    margin: 2% 5%;
+    margin-left: 25%;
+
+}
+
+.formC{
+    margin-top: 10%;
+    margin-left: 70%;
+    
+    margin-bottom: 10px;
+} 
+.content-table{
+    margin: 5% 5%;
+    padding-top: 20px;
+    /*border: 1px solid blue;*/
+}
+/*.xfrow2formA{*/
+    /*margin-left: 40%;*/
+    /*height: 40px;*/
+    /*margin-top: 5%;*/
+/*}*/
+/*.xfrow3formA{*/
+    /*margin-left: 20%;*/
+    /*height: 40px;*/
+    /*margin-top: 5%;*/
+/*}*/
+/*xfrow3formC{*/
+    /*margin-top: 5%;*/
+
+    /*margin-bottom: 10px;*/
+/*}*/
+.tail{
+    height: 20px;
+    border: 1px solid blue;
+}
+/*伪元素*//*
+.head::after{
+    content: "";
+    display: block;
+    clear: both;
+}*/

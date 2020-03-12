@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" data-th-fragment="header">
+<head  th:replace="/fragment/header :: header">
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<!--导航定位-->
+<div class="locationA">
+    <p>
+        <img src="/images/location.png" alt="Smiley face" width="20" height="20"/>
+        <em >
+            当前位置--
+        </em>
+        <span>报修管理--</span>
+        <span>管理报修单--</span>
+        <span>报修单详情</span>
+    </p>
+</div>
+<!--导航定位-->
+<div  class="content">
+    <!--标题+验证-->
+    <div class="row rowone">
+        <div class="col-md-6">
+            <div class="tagA">
+                <div class="Huialert Huialert-info">
+                    <span th:text="${FormModel.title}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="stuid" >学生账号：</label>
+            <div class="controls" th:if="${session.loginId} != null">
+                <a><span id="stuid"  th:text="${session.loginId}"></span></a>
+            </div>
+            <div class="controls" th:if="${session.loginId} == null">
+                <a th:href="@{/login}"><span class="label label-danger">请重新登录！</span></a>
+            </div>
+        </div>
+    </div>
+    <!--标题+验证-->
+    <!--内容-->
+    <div class="content-table">
+        <table border="1" class="table table-bordered table-hover">
+            <h3><strong >&nbsp</strong><span ></span></h3>
+               <tr>
+                  <td><strong>报修单ID:</strong><span th:text="${FormModel.maintenanceForm.fomrid}"></span></td>
+                  <td><strong>电脑型号:</strong><span th:text="${FormModel.maintenanceForm.computermodels}"></span></td>
+                  <td><strong>故障原因:</strong><span th:text="${FormModel.maintenanceForm.problemcause}"></span></td>
+                  <td><strong>上门时间:</strong><span th:text="${FormModel.maintenanceForm.worktime}"></span></td>
+              </tr>
+              <tr>
+                  <td><strong>维修人员:</strong><span th:text="${FormModel.maintenanceForm.workmenusername}"></span></td>
+                  <td><strong>维修人员联系方式:</strong><span th:text="${FormModel.maintenanceForm.workmenphone}"></span></td>
+                  <td><strong>申请人联系方式:</strong><span th:text="${FormModel.maintenanceForm.applysphone}"></span></td>
+                  <td><strong>申请人:</strong><span th:text="${FormModel.maintenanceForm.applysusername}"></span></td>
+              </tr>
+              <tr>
+                  <td th:switch="${FormModel.maintenanceForm.status}"><strong>单据状态:</strong>
+                  <p th:case="0"> 未分配</p>
+                  <p th:case="1"> 已分配</p>
+                  <p th:case="2"> 维修中</p>
+                  <p th:case="3"> 已完成</p>
+                  <p th:case="4"> 暂停</p>
+              </td>
+                  <td><strong>留言:</strong><span th:text="${FormModel.maintenanceForm.leavemessage}"></span></td>
+                  <td><strong></strong><span ></span></td>
+                 <td><mark><a th:href="@{'/Form/delete/'+${FormModel.maintenanceForm.fomrid}}">删除</a></mark>
+                      <mark><a th:href="@{'/Form/modify/'+${FormModel.maintenanceForm.fomrid}}">修改</a></mark>
+                      <mark><a th:href="@{/Form/list}">返回管理</a></mark>
+                  </td>
+            </tr>
+        </table>
+
+    </div>
+    <!--内容-->
+</div>
+<!--页脚-->
+<div th:replace="/fragment/footer :: footer">&copy; 2014 The Static Templates2</div>
+<!--页脚-->
+</body>
+</html>
