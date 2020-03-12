@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" data-th-fragment="header">
+<head  th:replace="fragment/header :: header">
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<script>
+    $(function(){
+        //propertychange监听input里面的字符变化,属性改变事件
+        $('.aa').bind('input propertychange', function() {
+            var $this = $(this);
+            console.log($this);
+            var text_length = $this.val().length;//获取当前文本框的长度
+            var current_width = parseInt(text_length) *16;//该16是改变前的宽度除以当前字符串的长度,算出每个字符的长度
+            console.log(current_width)
+            $this.css("width",current_width+"px");
+        });
+    })
+</script>
+<!--导航定位-->
+<div class="locationA">
+    <p>
+        <img src="/images/location.png" alt="Smiley face" width="20" height="20"/>
+        <em >
+            当前位置--
+        </em>
+        <span>报修管理--</span>
+        <span>添加报修单</span>
+    </p>
+</div>
+<!--导航定位-->
+<div  class="content">
+    <!--标题+验证-->
+    <div class="row rowone">
+        <div class="col-md-6">
+            <div class="tagA">
+                <div class="Huialert Huialert-info">
+                    添加你的报修单
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="stuid" >学生账号：</label>
+            <div class="controls" th:if="${session.loginId} != null">
+                <a><span id="stuid"  th:text="${session.loginId}"></span></a>
+            </div>
+            <div class="controls" th:if="${session.loginId} == null">
+                <a th:href="@{/login}"><span class="label label-danger">请重新登录！</span></a>
+            </div>
+        </div>
+    </div>
+    <!--标题+验证-->
+    <form  action="/Form/saveform" method="post" enctype="multipart/form-data">
+
+        <!--内容-->
+        <div class="content-table">
+            <table border="1" class="table table-bordered table-hover">
+
+                <tr>
+                    <td>
+                        <label class="control-label" for="computermodels">电脑型号：</label>
+                        <div class="controls">
+                            <input type="text" id="computermodels" name="computermodels" placeholder="" >
+                        </div>
+                    </td>
+                    <td>
+                        <label class="control-label" for="problemcause">故障原因：</label>
+                        <div class="controls">
+                            <input type="text" id="problemcause" name="problemcause" placeholder="" >
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" for="applysphone">申请人联系方式：</label>
+                        <div class="controls">
+                            <input type="text" id="applysphone" name="applysphone" placeholder=" " >
+                        </div>
+                    </td>
+
+                    <td>
+                        <label class="control-label" for="worktime">时间</label>
+                        <div class="controls">
+                            <input type="text" id="worktime" name="worktime" placeholder="2019.11.0" >
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!-- Button -->
+            <div class="controls" style="margin-left: 80%">
+                <button class="btn btn-success">提交</button>
+            </div>
+        </div>
+        <!--内容-->
+    </form>
+</div>
+
+<div th:replace="fragment/footer :: footer">&copy; 2019 The Static Templates2</div>
+</body>
+
+</html>
